@@ -34,17 +34,25 @@ def print_menu():
     print("0. Exit")
 
 def create_user():
+    """Create a new user."""
     username = input("Enter username: ")
     email = input("Enter email: ")
 
-    # Create a new user
-    user = User(username=username, email=email)
+    # Check if the username already exists
+    existing_user = session.query(User).filter_by(username=username).first()
+    if existing_user:
+        print(f"Error: Username '{username}' already exists. Please choose a different username.")
+        return
 
-    # Add user to session and commit to the database
-    session.add(user)
-    session.commit()
-    
-    print(f"User '{username}' created successfully.")
+    new_user = User(username=username, email=email)
+    session.add(new_user)
+    try:
+        session.commit()
+        print(f"User '{username}' created successfully!")
+    except Exception as e:
+        print(f"Error creating user: {e}")
+        session.rollback()
+
 
 def list_users():
     # Query the users from the database
