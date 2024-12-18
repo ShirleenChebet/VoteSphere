@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from .. import Base  # Import Base from the parent module
+from lib.models import Base  # Assuming Base is imported from lib.models
 
 class Candidate(Base):
     __tablename__ = 'candidates'
