@@ -101,7 +101,6 @@ VoteSphere/
 | ------- | ------- | ------------------- |
 | `id`    | Integer | Unique candidate ID |
 | `name`  | String  | Candidate's name    |
-| `party` | String  | Candidate's party   |
 
 ### Vote
 
@@ -126,7 +125,7 @@ VoteSphere/
    ```
    > 3
    Enter candidate name: Bob
-   Enter candidate party: Independent
+   
    ```
 
 3. Cast a vote:
